@@ -30,7 +30,8 @@ Here’s another way to define whether a positive whole number is even or odd:
 Zero is even.
 One is odd.
 For any other number N, its evenness is the same as N - 2.
-Define a recursive function isEven corresponding to this description. The function should accept a single parameter (a positive, whole number) and return a Boolean.
+Define a recursive function isEven corresponding to this description. 
+The function should accept a single parameter (a positive, whole number) and return a Boolean.
 Test it on 50 and 75. See how it behaves on -1. Why? Can you think of a way to fix this?
 */
 
@@ -62,7 +63,7 @@ console.log(isEven(-4));
 Bean counting
 You can get the Nth character, or letter, from a string by writing "string"[N]. 
 The returned value will be a string containing only one character (for example, "b"). 
-he first character has position 0, which causes the last one to be found at position string.
+The first character has position 0, which causes the last one to be found at position string.
 length - 1. 
 In other words, a two-character string has length 2, and its characters have positions 0 and 1.
 
@@ -74,9 +75,23 @@ except it takes a second argument that indicates the character that is to be cou
 (rather than counting only uppercase “B” characters). Rewrite countBs to make use of this new function.
 
  */
-// Your code here.
+const countBs1 = str => str.split("").filter(x => x === "B").length;
 
-//console.log(countBs("BBC"));
-// → 2
-//console.log(countChar("kakkerlak", "k"));
+const countChar = (str, char) => {
+  return str.split("").filter(x => x === char).length;
+};
+
+const countBs2 = str =>
+  str.split("").reduce((prev, curr) => {
+    if (curr === "B") {
+      return prev + 1;
+    }
+    return prev;
+  }, 0);
+
+console.log(countBs1("BBCB"));
+console.log(countBs2("BBCB"));
+// → 3
+console.log(countChar("kakkerlak", "k"));
 // → 4
+console.log(countChar("kakkerlak", "a"));
