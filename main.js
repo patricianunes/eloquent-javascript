@@ -120,6 +120,11 @@ const range = (start, end, step = 1) => {
     for (let i = start; i <= end; i += step) {
       newArray.push(i);
     }
+  } else if (step > 0 && start > end) {
+    let i = start;
+    for (; i >= end; i--) {
+      newArray.push(i);
+    }
   } else {
     let i = start;
     for (; i >= end; i = i + step) {
@@ -143,3 +148,4 @@ console.log(range(5, 2, -1));
 // → [5, 4, 3, 2]
 console.log(sum(range(1, 10)));
 // → 55
+console.log(range(6, 2));
